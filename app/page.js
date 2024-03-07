@@ -4,16 +4,17 @@ import { getTime } from '@/util/time';
 
 async function Time() {
   const data = await getTime();
-  console.log('data: ' + JSON.parse(data).time);
+  console.log('data: ' + data.results);
   revalidatePath('/', 'layout');
-  return JSON.parse(data).time;
+  return data.results;
 }
 
 export default function Home() {
   return (
     <main className={styles.main}>
      <h1>Azure nextjs app</h1>
-     <div>
+     <div> 
+      <p>Total number of users: </p>
       <Time />
      </div>
     </main>
